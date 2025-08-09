@@ -1,0 +1,8 @@
+.streamlit/secrets.toml
+.vscode/settings.json
+
+# Ignore all __pycache__ folders
+__pycache__/
+
+# Ignore compiled Python files
+*.pyc
