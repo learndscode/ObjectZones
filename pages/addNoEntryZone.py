@@ -1,9 +1,10 @@
 import streamlit as st
 import folium
+import json
 
 from streamlit_folium import st_folium
 
-st.title("Add No Entry Zone")
+st.title("Create / Update No Entry Zone(s)")
 
 # Create a Folium map centered somewhere
 m = folium.Map(location=[40, -100], zoom_start=4)
@@ -16,13 +17,31 @@ draw.add_to(m)
 # Display map with drawing enabled
 output = st_folium(m, width=800, height=500)
 
-user_input = st.text_input("Provide a Name for Zone:")
+user_input = st.text_input("Provide a Name for Zone(s):")
 
-# # Output contains geojson of drawn shapes under 'all_drawings'
-if output and "all_drawings" in output:
-    st.write("Features:")
-    for feature in output["all_drawings"]:
-        st.json(feature)
-        coords = feature.get("geometry", {}).get("coordinates", None)
-        if coords:
-            st.write("Coordinates:", coords)
+if st.button("Save Zone(s)"):
+    features = output.get("all_drawings")
+    if user_input:
+        if not features:
+            st.error("Please define at least one zone before saving.")
+        else:
+            # Rename the top-level feature type to "Zone": 
+            for feature in features:
+                if feature.get("type") == "Feature":
+                    feature["type"] = "Zone"
+            
+            # Filter only Polygon features
+            polygon_features = [
+                feature for feature in features
+                if feature.get("geometry", {}).get("type") == "Polygon"
+            ]
+
+            # Create a new GeoJSON object
+            new_geojson = {
+                "zone_name": user_input,
+                "zones": polygon_features
+            }
+            st.success(f"Zone '{user_input}' saved successfully!")
+            st.write("GeoJSON Data:", new_geojson)
+    else:
+        st.error("Please provide a name for the zone.")
