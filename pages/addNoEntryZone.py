@@ -3,6 +3,7 @@ import folium
 import json
 
 from streamlit_folium import st_folium
+from folium.plugins import Draw
 
 st.title("Create / Update No Entry Zone(s)")
 
@@ -10,12 +11,23 @@ st.title("Create / Update No Entry Zone(s)")
 m = folium.Map(location=[40, -100], zoom_start=4)
 
 # Add drawing controls
-from folium.plugins import Draw
-draw = Draw(export=True)
+draw = Draw(
+    draw_options={
+        'polyline': False,    # Disable polyline drawing
+        'polygon': True,
+        'circle': False,      # Disable circle drawing
+        'rectangle': True,
+        'marker': False,
+        'circlemarker': False
+    },
+    edit_options={'edit': True}
+)
+#draw = Draw(export=True)
 draw.add_to(m)
+m.save('map.html')
 
 # Display map with drawing enabled
-output = st_folium(m, width=800, height=500)
+output = st_folium(m, width=1200, height=500)
 
 user_input = st.text_input("Provide a Name for Zone(s):")
 
@@ -41,6 +53,9 @@ if st.button("Save Zone(s)"):
                 "zone_name": user_input,
                 "zones": polygon_features
             }
+            # Save to new JSON file
+                       
+
             st.success(f"Zone '{user_input}' saved successfully!")
             st.write("GeoJSON Data:", new_geojson)
     else:
