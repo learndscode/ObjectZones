@@ -61,10 +61,10 @@ else:
                 st.rerun()
         # Draw map of selected area
         zones_data = load_area_file_from_github(path, selected_file)
-        st.write(zones_data)
-        if not zones_data or "zones" not in zones_data:
+        #st.write(zones_data)
+        if not zones_data or len(zones_data) == 0:
             st.write("No zones found in the selected area: " + selected_file)
             st.stop()
-        zones = zones_data["zones"]
-        st.write("Zones in Selected Area:" + len(zones))
+        
+        st.write("Zones in Selected Area:" + str(len(zones_data)))
 
