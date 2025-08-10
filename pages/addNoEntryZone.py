@@ -54,7 +54,18 @@ if st.button("Save Zone(s)"):
                 "zones": polygon_features
             }
             # Save to new JSON file
-                       
+            # Convert to string
+            json_str = json.dumps(new_geojson, indent=2)
+
+            # Upload to GitHub "zones" folder
+            token = st.secrets["github_token"]
+            repo_owner = "learndscode"
+            repo_name = "ObjectZones"
+            branch = "main"
+            path = f"zones/{user_input}_zones.json"  # file path in repo
+            commit_message = f"Add zones file {user_input}_zones.json from app"
+
+            response = upload_to_github(token, repo_owner, repo_name, branch, path, json_str, commit_message)
 
             st.success(f"Zone '{user_input}' saved successfully!")
             st.write("GeoJSON Data:", new_geojson)
