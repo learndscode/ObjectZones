@@ -5,7 +5,7 @@ import time  # <-- for the delay
 
 from streamlit_folium import st_folium
 from folium.plugins import Draw
-from utils.saveZones import upload_to_github
+from utils.storageHandling import upload_to_github
 
 st.title("Create / Update No Entry Zones")
 
