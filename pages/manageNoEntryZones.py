@@ -34,10 +34,6 @@ else:
         # Add to table
         table_data.append({"Area": file_name.replace("_area.json", ""), "# of Zones": zone_count})
 
-        # Add all zone shapes to global array
-        for zone in zones:
-            st.session_state.shapes.append(zone)
-
     # Convert to DataFrame without index
     df = pd.DataFrame(table_data)
 

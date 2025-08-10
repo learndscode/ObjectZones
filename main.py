@@ -1,14 +1,10 @@
 import streamlit as st
 
-# 🌍 Global array to store zone shapes
-if "shapes" not in st.session_state:
-    st.session_state.shapes = []
-
 info_page = st.Page("pages/checkObjectNoEntryZone.py", title="Check Object in No Entry Zone", icon="📍")
+info_multiple_page = st.Page("pages/checkMultipleNoEntryZones.py", title="Check Multiple Objects in No Entry Zones", icon="🗺️")
 zones_page = st.Page("pages/manageNoEntryZones.py", title="Manage No Entry Zones",  icon="🚫")
-#add_zone = st.Page("pages/addNoEntryZone.py", title="Create/Update No Entry Zones",  icon="➕")
 
-pg = st.navigation([info_page, zones_page])
+pg = st.navigation([info_page, info_multiple_page, zones_page])
 
 st.set_page_config(
     page_title="No Entry Zone Manager",
