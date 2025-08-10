@@ -18,7 +18,7 @@ def islocationwithinnoentryzone(object_name, lat, lon):
                 # Convert the zone to a shapely geometry
                 geom = shape(zone["geometry"])
                 if geom.contains(Point(lon, lat)):
-                    return True, f"{object_name} is within a **no entry zone** in {file_name.replace('_area.json', '')} area."
+                    return True, f"{object_name} is within a **no entry zone** in the {file_name.replace('_area.json', '')} area."
         return False, f"{object_name} is not within any no entry zones."
 
 def islocationwithincountry(lat, lon):
