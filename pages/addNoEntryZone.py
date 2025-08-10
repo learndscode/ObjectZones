@@ -49,10 +49,12 @@ if st.button("Save Area"):
                 feature for feature in features
                 if feature.get("geometry", {}).get("type") == "Polygon"
             ]
+            zone_count = len(polygon_features)
 
             # Create a new GeoJSON object
             new_geojson = {
                 "area_name": user_input,
+                "zone_count": zone_count,
                 "zones": polygon_features
             }
             # Save to new JSON file
