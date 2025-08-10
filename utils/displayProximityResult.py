@@ -1,6 +1,6 @@
 import streamlit as st
 
-def display_results(response, lat, lon):
+def display_results(response, lat, lon, object_name):
     # Check if result is not in country
     notInCountry = response.get("notincountry")
     locatedCountry = response.get("locatedcountry")
@@ -12,7 +12,7 @@ def display_results(response, lat, lon):
         st.error(f"{errorMessage}")
     elif notInCountry is not None:
         #st.error(f"The specified location is not within the borders of a country. It is likely on a boat or at the bottom of the ocean.")
-        error_message = "The specified location is not within the borders of a country. It is likely on a boat or at the bottom of the ocean."
+        error_message = f"The specified location is not within the borders of a country. {object_name} is likely on a boat or at the bottom of the ocean."
         #border-left: 5px solid #2196F3;
         st.markdown(
             f"""
@@ -29,9 +29,9 @@ def display_results(response, lat, lon):
         )
     else:
         if locatedCountry == "United States of America":
-            st.success(f"Object is **{distance_miles}** miles ({distance_km} km) from the closest border of the United States.")
+            st.success(f"{object_name} is **{distance_miles}** miles ({distance_km} km) from the closest border of the United States.")
         else:
-            st.success(f"Object is **{distance_miles}** miles ({distance_km} km) from the closest border of {locatedCountry}.")
+            st.success(f"{object_name} is **{distance_miles}** miles ({distance_km} km) from the closest border of {locatedCountry}.")
         st.markdown(
             f'<a href="{map_path_link}" target="_blank">Open Path To Border in Maps</a>',
             unsafe_allow_html=True

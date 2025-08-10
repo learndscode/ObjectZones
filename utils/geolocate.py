@@ -5,7 +5,7 @@ from pathlib import Path
 
 from utils.storageHandling import get_area_files_from_github, load_area_file_from_github
 
-def islocationwithinnoentryzone(lat, lon):
+def islocationwithinnoentryzone(object_name, lat, lon):
     path = "areas"
     area_files = get_area_files_from_github(path)
 
@@ -18,8 +18,8 @@ def islocationwithinnoentryzone(lat, lon):
                 # Convert the zone to a shapely geometry
                 geom = shape(zone["geometry"])
                 if geom.contains(Point(lon, lat)):
-                    return True, f"Object is within a **no entry zone** in {file_name.replace('_area.json', '')} area."
-        return False, "Object is not within any no entry zones."
+                    return True, f"{object_name} is within a **no entry zone** in {file_name.replace('_area.json', '')} area."
+        return False, f"{object_name} is not within any no entry zones."
 
 def islocationwithincountry(lat, lon):
     # Path to the downloaded and extracted shapefile
