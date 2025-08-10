@@ -70,6 +70,53 @@ def save_to_github(path, content_str, commit_message):
     response = requests.put(api_url, headers={"Authorization": f"token {token}"}, json=data)
     return response
 
+def get_file_sha(path, filename):
+    token = st.secrets["github_token"]
+    owner = st.secrets["repo_owner"]
+    repo = st.secrets["repo_name"]
+    branch = st.secrets["branch"]
+
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/contents/{path}/{filename}?ref={branch}"
+    r = requests.get(url, headers=headers)
+    if r.status_code != 200:
+        return None
+    return r.json().get("sha")
+
+def delete_github_file(path, filename):
+    token = st.secrets["github_token"]
+    owner = st.secrets["repo_owner"]
+    repo = st.secrets["repo_name"]
+    branch = st.secrets["branch"]
+
+    headers = {
+        "Authorization": f"token {token}",
+        "Accept": "application/vnd.github.v3+json",
+    }
+
+    sha = get_file_sha(path, filename)
+    if not sha:
+        st.error(f"Could not get SHA for {filename}")
+        return False
+
+    url = f"https://api.github.com/repos/{owner}/{repo}/contents/{path}/{filename}"
+    data = {
+        "message": f"Delete {filename}",
+        "sha": sha,
+        "branch": branch
+    }
+    r = requests.delete(url, headers=headers, json=data)
+    if r.status_code in (200, 204):
+        st.success(f"Deleted {filename}")
+        return True
+    else:
+        st.error(f"Failed to delete {filename}: {r.text}")
+        return False
+
 # ***********************************************************************
 # * END OF Utility functions for handling GITHUB storage 
 # ***********************************************************************
