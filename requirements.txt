@@ -3,3 +3,5 @@ geopandas
 shapely
 uvicorn
 streamlit-aggrid
+folium
+streamlit-folium
