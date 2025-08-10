@@ -6,9 +6,9 @@ if "shapes" not in st.session_state:
 
 info_page = st.Page("pages/showBorderProximity.py", title="Show Object Location Info", icon="📍")
 zones_page = st.Page("pages/manageNoEntryZones.py", title="Manage No Entry Zones",  icon="🚫")
-add_zone = st.Page("pages/addNoEntryZone.py", title="Create/Update No Entry Zones",  icon="➕")
+#add_zone = st.Page("pages/addNoEntryZone.py", title="Create/Update No Entry Zones",  icon="➕")
 
-pg = st.navigation([info_page, zones_page, add_zone])
+pg = st.navigation([info_page, zones_page])
 
 st.set_page_config(
     page_title="No Entry Zone Manager",
