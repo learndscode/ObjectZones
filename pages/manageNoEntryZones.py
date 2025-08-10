@@ -95,9 +95,9 @@ else:
                     centroid = geom.centroid
                     center = (centroid.y, centroid.x)
                     if len(zones_data) > 1:
-                        zoom_level = 6
+                        zoom_level = 5
                     else:
-                        zoom_level = 8
+                        zoom_level = 7
                     m = folium.Map(location=center, zoom_start=zoom_level)          
 
                 coords = geometry.get("coordinates")[0]  # Outer ring coords

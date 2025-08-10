@@ -75,7 +75,8 @@ def add_no_entry_zone():
                     response = save_to_github(path, json_str, commit_message)
 
                     if response.status_code in (200, 201):
-                        st.success(f"{user_input} area saved successfully.")
+                        st.session_state.add_area = False
+                        st.rerun()
                     else:
                         st.error(f"Failed to save area: {response.status_code} - {response.text}")
         else:
