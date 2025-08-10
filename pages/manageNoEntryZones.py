@@ -1,5 +1,6 @@
 import streamlit as st
-import requests
+
+#from storageHandling import get_area_files
 
 st.title("Manage No Entry Zones Around the World")
 

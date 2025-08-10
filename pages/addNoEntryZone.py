@@ -61,17 +61,13 @@ if st.button("Save Area"):
             # Convert to string
             json_str = json.dumps(new_geojson, indent=2)
 
-            # Upload to GitHub "zones" folder
-            token = st.secrets["github_token"]
-            repo_owner = st.secrets["repo_owner"]
-            repo_name = st.secrets["repo_name"]
-            branch = st.secrets["branch"]
-            path = f"area/{user_input}_area.json"  # file path in repo
+            # Upload to GitHub "area" folder
+            path = f"areas/{user_input}_area.json"  # file path in repo
             commit_message = f"Add area file {user_input}_area.json from app"
 
             with st.spinner("Saving area..."):
                 #time.sleep(0.1)  # slight delay gives Streamlit time to render spinner
-                response = save_to_github(token, repo_owner, repo_name, branch, path, json_str, commit_message)
+                response = save_to_github(path, json_str, commit_message)
 
                 if response.status_code in (200, 201):
                     st.success(f"Area '{user_input}' saved successfully.")
