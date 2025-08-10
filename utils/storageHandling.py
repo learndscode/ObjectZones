@@ -23,7 +23,7 @@ def get_files_from_github(path):
         st.error("Failed to fetch area files from GitHub.")
         return []
     files = response.json()
-    return [f["name"] for f in files if f["name"].endswith(".json") and f["name"] != "blankarea.json"]
+    return [f["name"] for f in files if f["name"].endswith(".json") and f["name"] != "blank.json"]
 
 # Load a JSON file from GitHub and count zones
 def load_file_from_github(path, file_name):

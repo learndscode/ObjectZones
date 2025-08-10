@@ -4,16 +4,40 @@ import pandas as pd
 from st_aggrid import AgGrid, GridOptionsBuilder
 from utils.storageHandling import get_files_from_github, load_file_from_github, delete_github_file
 
-st.title("Object Location Info")
+st.title("Multiple Object Location Info 🏗️")
+st.write("**🚧 Under Construction 🚧**")
+
+object_name = st.text_input(
+    label="Enter Object Name",
+    placeholder="(Optional)", 
+    value="My Object"  # default value
+)
+
+# Get longitude and latitude coordinates
+lat_value = st.number_input(
+    label="Enter Object's Latitude",
+    min_value=-90.0,
+    max_value=90.0,
+    value=32.7767,     # default
+    step=1.0
+)
+
+lon_value = st.number_input(
+    label="Enter Object's Longitude",
+    min_value=-180.0,
+    max_value=180.0,
+    value=-96.797,     # default
+    step=1.0
+)
+
 
 
 path = "objects"
 object_files = get_files_from_github(path)
 
 if not object_files:
-    st.warning("No areas with no entry zones were found.")
+    st.warning("No objects were found. Add an object to get started.")
     st.stop()
-
 
 # Initialize data in session state
 if "data" not in st.session_state:
