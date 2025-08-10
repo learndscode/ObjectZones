@@ -4,7 +4,7 @@ import streamlit as st
 if "shapes" not in st.session_state:
     st.session_state.shapes = []
 
-info_page = st.Page("pages/showBorderProximity.py", title="Show Object Location Info", icon="📍")
+info_page = st.Page("pages/checkObjectNoEntryZone.py", title="Check Object in No Entry Zone", icon="📍")
 zones_page = st.Page("pages/manageNoEntryZones.py", title="Manage No Entry Zones",  icon="🚫")
 #add_zone = st.Page("pages/addNoEntryZone.py", title="Create/Update No Entry Zones",  icon="➕")
 

@@ -23,7 +23,7 @@ lon_value = st.number_input(
 )
 
 if isinstance(lat_value, (int, float)) and isinstance(lon_value, (int, float)):
-    if st.button("Get Border Proximity"):
+    if st.button("Check No Entry Zone"):
         display_results(geoLocateObject(lat_value, lon_value), lat_value, lon_value)
 else:
     st.markdown(
