@@ -1,7 +1,6 @@
-fastapi
+pandas
 geopandas
 shapely
-uvicorn
-streamlit-aggrid
 folium
 streamlit-folium
+streamlit-aggrid
