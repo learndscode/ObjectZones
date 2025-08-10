@@ -1,8 +1,8 @@
 import streamlit as st
-import emoji
 
 # 🌍 Global array to store zone shapes
-shapes = []
+if "shapes" not in st.session_state:
+    st.session_state.shapes = []
 
 info_page = st.Page("pages/showBorderProximity.py", title="Show Object Location Info", icon="📍")
 zones_page = st.Page("pages/manageNoEntryZones.py", title="Manage No Entry Zones",  icon="🚫")

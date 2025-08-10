@@ -1,7 +1,6 @@
 import streamlit as st
 import folium
 import json
-import time  # <-- for the delay
 
 from streamlit_folium import st_folium
 from folium.plugins import Draw
