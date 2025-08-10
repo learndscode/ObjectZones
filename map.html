@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_a8438686c01ac6972232f51f4c1e2a28 {
+                #map_cd98c03d4ddfacd96b0438e9377b9da9 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -56,7 +56,7 @@
 <body>
     
     
-            <div class="folium-map" id="map_a8438686c01ac6972232f51f4c1e2a28" ></div>
+            <div class="folium-map" id="map_cd98c03d4ddfacd96b0438e9377b9da9" ></div>
         
     
             
@@ -65,8 +65,8 @@
 <script>
     
     
-            var map_a8438686c01ac6972232f51f4c1e2a28 = L.map(
-                "map_a8438686c01ac6972232f51f4c1e2a28",
+            var map_cd98c03d4ddfacd96b0438e9377b9da9 = L.map(
+                "map_cd98c03d4ddfacd96b0438e9377b9da9",
                 {
                     center: [40.0, -100.0],
                     crs: L.CRS.EPSG3857,
@@ -83,7 +83,7 @@
 
         
     
-            var tile_layer_81a93b6d31712532c5cc110091b4f414 = L.tileLayer(
+            var tile_layer_6fa135cd99b783bac6c60c44141d03aa = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -100,7 +100,7 @@
             );
         
     
-            tile_layer_81a93b6d31712532c5cc110091b4f414.addTo(map_a8438686c01ac6972232f51f4c1e2a28);
+            tile_layer_6fa135cd99b783bac6c60c44141d03aa.addTo(map_cd98c03d4ddfacd96b0438e9377b9da9);
         
     
             var options = {
@@ -109,16 +109,16 @@
               edit: {"edit": true},
             }
                 // FeatureGroup is to store editable layers.
-                var drawnItems_draw_control_df3883769dd7461ffb8e14d4475f7672 =
+                var drawnItems_draw_control_fcdbd1863512af2808fa2482099dabc9 =
                     new L.featureGroup().addTo(
-                        map_a8438686c01ac6972232f51f4c1e2a28
+                        map_cd98c03d4ddfacd96b0438e9377b9da9
                     );
 
-            options.edit.featureGroup = drawnItems_draw_control_df3883769dd7461ffb8e14d4475f7672;
-            var draw_control_df3883769dd7461ffb8e14d4475f7672 = new L.Control.Draw(
+            options.edit.featureGroup = drawnItems_draw_control_fcdbd1863512af2808fa2482099dabc9;
+            var draw_control_fcdbd1863512af2808fa2482099dabc9 = new L.Control.Draw(
                 options
-            ).addTo( map_a8438686c01ac6972232f51f4c1e2a28 );
-            map_a8438686c01ac6972232f51f4c1e2a28.on(L.Draw.Event.CREATED, function(e) {
+            ).addTo( map_cd98c03d4ddfacd96b0438e9377b9da9 );
+            map_cd98c03d4ddfacd96b0438e9377b9da9.on(L.Draw.Event.CREATED, function(e) {
                 var layer = e.layer,
                     type = e.layerType;
                 var coords = JSON.stringify(layer.toGeoJSON());
@@ -126,10 +126,10 @@
                     alert(coords);
                     console.log(coords);
                 });
-                drawnItems_draw_control_df3883769dd7461ffb8e14d4475f7672.addLayer(layer);
+                drawnItems_draw_control_fcdbd1863512af2808fa2482099dabc9.addLayer(layer);
             });
-            map_a8438686c01ac6972232f51f4c1e2a28.on('draw:created', function(e) {
-                drawnItems_draw_control_df3883769dd7461ffb8e14d4475f7672.addLayer(e.layer);
+            map_cd98c03d4ddfacd96b0438e9377b9da9.on('draw:created', function(e) {
+                drawnItems_draw_control_fcdbd1863512af2808fa2482099dabc9.addLayer(e.layer);
             });
 
             
