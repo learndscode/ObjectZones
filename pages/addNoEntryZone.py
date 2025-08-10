@@ -5,7 +5,7 @@ import time  # <-- for the delay
 
 from streamlit_folium import st_folium
 from folium.plugins import Draw
-from utils.storageHandling import upload_to_github
+from utils.storageHandling import save_to_github
 
 st.title("Create / Update No Entry Zones")
 
@@ -71,7 +71,7 @@ if st.button("Save Area"):
 
             with st.spinner("Saving area..."):
                 #time.sleep(0.1)  # slight delay gives Streamlit time to render spinner
-                response = upload_to_github(token, repo_owner, repo_name, branch, path, json_str, commit_message)
+                response = save_to_github(token, repo_owner, repo_name, branch, path, json_str, commit_message)
 
                 if response.status_code in (200, 201):
                     st.success(f"Area '{user_input}' saved successfully.")

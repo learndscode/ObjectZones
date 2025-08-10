@@ -2,7 +2,9 @@ import json
 import base64
 import requests
 
-def upload_to_github(token, owner, repo, branch, path, content_str, commit_message):
+
+
+def save_to_github(token, owner, repo, branch, path, content_str, commit_message):
     # GitHub API URL for the file
     url = f"https://api.github.com/repos/{owner}/{repo}/contents/{path}"
     
