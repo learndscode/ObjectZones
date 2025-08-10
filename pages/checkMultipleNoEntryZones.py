@@ -8,8 +8,11 @@ st.title("Object Location Info")
 
 
 path = "objects"
-area_files = get_files_from_github(path)
+object_files = get_files_from_github(path)
 
+if not object_files:
+    st.warning("No areas with no entry zones were found.")
+    st.stop()
 
 
 # Initialize data in session state
