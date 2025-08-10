@@ -111,7 +111,7 @@ def delete_github_file(path, filename):
     }
     r = requests.delete(url, headers=headers, json=data)
     if r.status_code in (200, 204):
-        st.success(f"Deleted {filename}")
+        #st.success(f"Deleted {filename}")
         return True
     else:
         st.error(f"Failed to delete {filename}: {r.text}")

@@ -41,7 +41,7 @@ if st.button("Save Area"):
             # Rename the top-level feature type to "Zone": 
             for feature in features:
                 if feature.get("type") == "Feature":
-                    feature["type"] = "Area"
+                    feature["type"] = "Zone"
             
             # Filter only Polygon features
             polygon_features = [
@@ -69,7 +69,7 @@ if st.button("Save Area"):
                 response = save_to_github(path, json_str, commit_message)
 
                 if response.status_code in (200, 201):
-                    st.success(f"Area '{user_input}' saved successfully.")
+                    st.success(f"{user_input} area saved successfully.")
                 else:
                     st.error(f"Failed to save area: {response.status_code} - {response.text}")
     else:
