@@ -1,25 +1,16 @@
 import streamlit as st
 import pandas as pd
+
 from st_aggrid import AgGrid, GridOptionsBuilder
+from utils.storageHandling import get_files_from_github, load_file_from_github, delete_github_file
 
 st.title("Object Location Info")
 
-# Disable cell border highlight on selection/focus
-st.markdown(
-    """
-    <style>
-    .ag-theme-streamlit .ag-cell-focus {
-        outline: none !important;
-        box-shadow: none !important;
-        border: none !important;
-    }
-    .ag-theme-streamlit .ag-cell-focus > div {
-        border: none !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+
+path = "objects"
+area_files = get_files_from_github(path)
+
+
 
 # Initialize data in session state
 if "data" not in st.session_state:

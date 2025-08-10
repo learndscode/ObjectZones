@@ -3,17 +3,17 @@ import geopandas as gpd
 from shapely.geometry import shape, Point
 from pathlib import Path
 
-from utils.storageHandling import get_area_files_from_github, load_area_file_from_github
+from utils.storageHandling import get_files_from_github, load_file_from_github
 
 def islocationwithinnoentryzone(object_name, lat, lon):
     path = "areas"
-    area_files = get_area_files_from_github(path)
+    area_files = get_files_from_github(path)
 
     if not area_files:
         return False, "No areas with no entry zones were found."
     else:
         for file_name in area_files:
-            zones = load_area_file_from_github(path, file_name)
+            zones = load_file_from_github(path, file_name)
             for zone in zones:
                 # Convert the zone to a shapely geometry
                 geom = shape(zone["geometry"])

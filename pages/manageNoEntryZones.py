@@ -6,10 +6,10 @@ from st_aggrid import AgGrid, GridOptionsBuilder
 from streamlit_folium import st_folium
 from shapely.geometry import shape
 
-from utils.storageHandling import get_area_files_from_github, load_area_file_from_github, delete_github_file
+from utils.storageHandling import get_files_from_github, load_file_from_github, delete_github_file
 from pages.addNoEntryZone import add_no_entry_zone
 
-# Session state to track which file is awaiting deletion confirmation
+# Session state to track if add is in process
 if "add_area" not in st.session_state:
     st.session_state.add_area = False
 
@@ -18,7 +18,7 @@ if st.button("Add Area"):
     st.session_state.add_area = True
 
 path = "areas"
-area_files = get_area_files_from_github(path)
+area_files = get_files_from_github(path)
 
 if not area_files:
     st.warning("No areas with no entry zones were found.")
@@ -28,7 +28,7 @@ else:
     table_data = []
 
     for file_name in area_files:
-        zones = load_area_file_from_github(path,file_name)
+        zones = load_file_from_github(path,file_name)
         zone_count = len(zones)
         
         # Add to table
@@ -75,7 +75,7 @@ else:
                 st.session_state.confirm_delete = None
                 st.rerun()
         # Draw map of selected area
-        zones_data = load_area_file_from_github(path, selected_file)
+        zones_data = load_file_from_github(path, selected_file)
         #st.write(zones_data)
         if not zones_data or len(zones_data) == 0:
             st.write("No zones found in the selected area: " + selected_file)

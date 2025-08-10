@@ -11,7 +11,7 @@ shapes = []
 # ***********************************************************************
 
 # List of files in area/ folder from GitHub API
-def get_area_files_from_github(path):
+def get_files_from_github(path):
     token = st.secrets["github_token"]
     owner = st.secrets["repo_owner"]
     repo = st.secrets["repo_name"]
@@ -26,7 +26,7 @@ def get_area_files_from_github(path):
     return [f["name"] for f in files if f["name"].endswith(".json") and f["name"] != "blankarea.json"]
 
 # Load a JSON file from GitHub and count zones
-def load_area_file_from_github(path, file_name):
+def load_file_from_github(path, file_name):
     token = st.secrets["github_token"]
     owner = st.secrets["repo_owner"]
     repo = st.secrets["repo_name"]
