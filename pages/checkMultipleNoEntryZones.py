@@ -4,7 +4,7 @@ import pandas as pd
 from st_aggrid import AgGrid, GridOptionsBuilder
 from utils.storageHandling import get_files_from_github, load_file_from_github, delete_github_file
 
-st.title("Multiple Objects' Location Info 🏗️")
+st.title("Multiple Objects Location Info 🏗️")
 st.write("**🚧 Under Construction 🚧**")
 
 object_name = st.text_input(
