@@ -2,7 +2,7 @@
   "zone_name": "Houston and Victoria Ports",
   "zones": [
     {
-      "type": "Zone",
+      "type": "Area",
       "properties": {},
       "geometry": {
         "type": "Polygon",
@@ -41,7 +41,7 @@
       }
     },
     {
-      "type": "Zone",
+      "type": "Area",
       "properties": {},
       "geometry": {
         "type": "Polygon",
@@ -72,7 +72,7 @@
       }
     },
     {
-      "type": "Zone",
+      "type": "Area",
       "properties": {},
       "geometry": {
         "type": "Polygon",
